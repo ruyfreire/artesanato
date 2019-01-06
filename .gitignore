@@ -1,0 +1,8 @@
+# pastas para ignorar
+
+dist/
+node_modules/
+
+# ignorar arquivos
+
+package-lock.json

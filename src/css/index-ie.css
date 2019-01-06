@@ -1,0 +1,656 @@
+* {
+    margin: 0;
+    padding: 0;
+    border: 0;
+}
+
+html {
+    font-family: verdana, sans-serif;
+    font-weight: bold;
+    font-size: 16px;
+}
+
+a, a:visited, a:focus, a:hover, a:active {
+    text-decoration: none;
+    color: inherit;
+}
+
+section {
+    padding-bottom: 1em;
+    text-align: center;
+}
+
+.sessao-chocolate {
+    background-color: #3e2723;
+    border-top: 8px solid #b76642;
+    color: #FFF;
+}
+
+.titulo {
+    font-size: 2em;
+    text-align: center;
+    padding-top: .5em;
+    padding-bottom: 1em;
+}
+
+#botao-topo {
+    position: fixed;
+    right: 2em;
+    bottom: 2em;
+    padding: .5em;
+    background-color: #b76642;
+    transition: opacity .6s ease-in-out, box-shadow .2s ease-in;
+    border-radius: 2px;
+    box-shadow: -3px 3px 10px #000;
+    cursor: pointer;
+}
+
+#botao-topo:active {
+    box-shadow: none;
+}
+
+.oculta-botao {
+    opacity: 0;
+    visibility: hidden;
+}
+
+/* =====================  CABEÇALHO  =============================== */
+
+#menu {
+    height: 80px;
+    width: 100%;
+    font-size: 1.2em;
+    color: #FFF;
+    background-color: #3e2723;
+    /* border-bottom: 4px solid #b76642; */
+}
+#lista-menu,
+#lista-menu li a {
+    width: 100%;
+
+}
+#menu>div {
+    position: relative;
+    z-index: 10;
+    text-align: center;
+    height: 80px;   
+}
+
+#botao-menu {
+    position: absolute;
+    width: 100%;
+    height: 50px;
+    margin-top: 16px;
+    z-index: -10;
+    cursor: pointer;
+}
+
+#botao-menu span {
+    display: block;
+    border: 4px solid #FFF;
+    width: 150px;
+    margin: 6px auto;
+}
+
+.esconde {
+    height: 0;
+    padding-bottom: 0;
+}
+.exibe {
+    height: 160px !important;
+    padding-bottom: .5em !important;
+}
+
+#lista-menu {
+    position: absolute;
+    background-color: #3e2723;
+    border-bottom: 5px solid #b76642;
+    top: 100%;
+    overflow: hidden;
+    transition: height .5s ease-in-out;
+}
+
+#lista-menu li {
+    padding: .5em;
+}
+
+#lista-menu li a {
+    display: inline-block;
+    position: relative;
+}
+
+#lista-menu li a:focus,
+#lista-menu li a:hover {
+    color: #b76642;
+}
+
+#logo-topo {
+    border-radius: 50%;
+    border: 10px solid #3e2723;
+}
+
+/* ========================  BANNER  ========================= */
+
+header {
+    background-image: url(../img/fundo.png);
+    background-attachment: fixed;
+    position: relative;
+    height: calc(100vh - 85px);
+    display: grid;
+}
+
+header > div {
+    height: 85%;
+    position: relative;
+}
+.h-doces,
+.h-artesanato {
+    padding: 2em .5em;
+    width: 100%;
+    box-sizing: border-box;
+}
+.h-doces div,
+.h-artesanato div {
+    display: inline-block;
+    background-color: rgba(62,39,35,.9);
+    padding: 1em;
+    border-radius: 6px;
+    color: #FFF;
+    font-size: 1.2em;
+    width: 20ch;
+}
+
+.h-artesanato {
+    text-align: right;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+}
+
+/* ======================  SECTION DOCES e ARTESANATO  ========================== */
+
+.doces-lista, .artesanato-lista {
+    width: 100%;
+    padding-bottom: 1em;
+
+    display: -webkit-inline-box;
+    display: -ms-inline-flexbox;
+        display: inline-flex;
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+    -ms-flex-pack: distribute;
+        justify-content: space-between;
+}
+
+.doces-lista div,
+.artesanato-lista div {
+    text-align: center;
+    padding: 10px;
+    transition: box-shadow .35s ease-in;
+    cursor: pointer;
+}
+
+.doces-lista div:hover,
+.doces-lista div:focus,
+.artesanato-lista div:hover,
+.artesanato-lista div:focus {
+    box-shadow: -3px 3px 15px rgba(0,0,0,.8);
+}
+
+
+.doces-lista div img,
+.artesanato-lista div img {
+    border-radius: 3px;
+    margin-bottom: 10px;
+    width: 100px;
+}
+
+.doces-lista div:hover img,
+.doces-lista div:focus img,
+.artesanato-lista div:hover img,
+.artesanato-lista div:focus img {
+    box-shadow: none;
+}
+
+.doces-lista div p,
+.artesanato-lista div p {
+    font-size: 1.2em;
+    font-weight: bold;
+}
+
+#doces div ~ p,
+#artesanato div ~ p {
+    padding: 1em;
+}
+
+/* =========================  JANELA DOCES E ARTESANATO ========================================== */
+
+.subtitulo {
+    text-align: center;
+    font-size: 1.2em;
+    padding-bottom: .5em;
+}
+
+.menu-aberto {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,.3);
+    z-index: 99;
+}
+
+.janela-sessao {
+    position: fixed;
+    display: inline-block;
+    padding: .5em;
+    box-shadow: -10px 10px 15px #000;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #b76642;
+    border-radius: 10px;
+    z-index: 999;
+    transition: opacity .6s ease-in-out;
+    overflow: hidden;
+}
+
+#artesanato .janela-sessao {
+    background-color: #FFF;
+    border: 1px solid #000;
+}
+
+.janela-off {
+    opacity: 0;
+    visibility: hidden;
+}
+
+.janela-sessao > p {
+    font-size: 70%;
+    font-family: Verdana, sans-serif;
+}
+
+.container-janela {
+    display: -ms-inline-grid;
+        display: inline-grid;
+    -ms-grid-columns: auto auto;
+        grid-template-columns: auto auto;
+    border: 1px solid rgba(0,0,0,0.5);
+    border-radius: 10px;
+    padding: .5em;
+}
+
+.janela-item-menu {
+    display: grid;
+    display: -ms-grid;
+    align-content: space-evenly;
+}
+
+.janela-item-descricao {
+    background-color: #3e2723;
+    border-radius: 0 5px 5px 0;
+    padding: .5em;
+    margin-left: .5em;
+}
+
+#artesanato .janela-item-descricao {
+    background-color: #AAA;
+}
+
+.lista-subitem {
+    padding: .5em;
+    margin-bottom: .5em;
+    border-radius: 5px;
+    background-color: #bb785a;
+    cursor: pointer;
+}
+.lista-subitem:last-child {margin-bottom: 0;}
+
+.lista-subitem:hover,
+.lista-subitem:focus {
+    background-color: #3e2723;
+}
+
+#artesanato .lista-subitem {
+    background-color: #DDD;
+}
+
+#artesanato .lista-subitem:hover,
+#artesanato .lista-subitem:focus {
+    background-color: #AAA;
+}
+
+.item-ativo {
+    background-color: #3e2723;
+    box-shadow: none;
+    border-radius: 5px 0 0 5px;
+    border: 0;
+    position: relative;
+}
+
+#artesanato .item-ativo {
+    background-color: #AAA;
+}
+
+.item-ativo:after {
+    content: "";
+    display: inline-block;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 10%;
+    background-color: #3e2723;
+    z-index: -10;
+}
+
+#artesanato .item-ativo:after {
+    background-color: #AAA;
+}
+
+.item-descricao-off {
+    display: none;
+}
+
+/* ======================  SECTION TRABALHOS  ========================== */
+
+#trabalhos {
+    padding-left: 0;
+    padding-right: 0;
+}
+
+.quadro {
+    text-align: center;
+    padding-bottom: 2em;
+}
+
+.fotos {
+    border: 5px solid #b76642;
+    width: 200px;
+    margin: auto;
+    text-align: center;
+    padding: 2px;
+    background-color: #FFF;
+    cursor: pointer;
+}
+
+
+.fotos a,
+img.item-foto {
+    max-width: 100%;
+    display: inline-block;
+    height: 100px;
+}
+
+.botao-fotos {
+    background-color: #3e2723;
+    width: 100%;
+    display: inline-block;
+    box-sizing: border-box;
+    margin: 2px 0;
+    padding: 5px;
+}
+
+.botao-fotos:before {
+    content: "";
+    display: inline-block;
+    height: 100%;
+    vertical-align: middle;
+}
+
+.botao-fotos img {
+    vertical-align: middle;
+}
+
+.botao-fotos:hover,
+.botao-fotos:focus {
+    background-color: #b76642;
+}
+
+#botao-prox {
+    margin: 0;
+}
+
+#botao-prox img {
+    transform: rotate(90deg);
+}
+#botao-voltar img {
+    transform: rotate(90deg);
+}
+
+#trabalhos > h3 a:hover,
+#trabalhos > h3 a:focus {
+    color: #b76642;
+}
+
+/* =====================  CONTATO  =========================== */
+
+#contato form {
+    width: 90%;
+    margin: auto;
+}
+#contato label {
+    display: block;
+    margin-bottom: 1em;
+    text-align: left;
+}
+
+#contato label span {
+    display: block;
+    width: 20%;
+    padding-bottom: 2px;
+}
+
+#contato label input,
+#contato label select,
+#contato label textarea  {
+    box-sizing: border-box;
+    width: 100%;
+    max-width: 100%;
+    border-radius: 2px;
+    border: 1px solid rgba(0,0,0,.5);
+}
+
+#contato label input:focus,
+#contato label input:active,
+#contato label select:focus,
+#contato label select:active,
+#contato label textarea:focus,
+#contato label textarea:active {
+    box-shadow: 0 0 10px 1px #b76642;
+    outline-color: transparent;
+    -webkit-outline-color: transparent;
+}
+
+#contato label input,
+#contato label select,
+#contato label textarea {
+    padding: 8px;
+}
+
+#contato label textarea {
+    vertical-align: top;
+    height: 15ch;
+    min-height: 10ch;
+    resize: vertical;
+}
+
+#botao-enviar {
+    font-size: 1em;
+    padding: .5em 1em;
+    background-color: #3e2723;
+    border: 0;
+    border-radius: 5px;
+    box-shadow: -3px 3px 10px #000;
+    color: #FFF;
+    font-family: inherit;
+}
+
+#botao-enviar:hover,
+#botao-enviar:focus {
+    background-color: #b76642;
+    cursor: pointer;
+}
+
+#botao-enviar:active {
+    box-shadow: none;
+    /* transition: box-shadow .1s ease-in-out; */
+}
+
+/* =========================  FOOTER  =========================== */
+
+footer {
+    width: 100%;
+    text-align: center;
+    padding: 3em 0;
+}
+
+footer .logo {
+    margin-bottom: 1em;
+    border-radius: 100%;
+}
+
+#redes-sociais img {
+    width: 40px;
+}
+
+#redes-sociais li {
+    display: inline-block;
+    padding: 10px;
+}
+
+
+@media (max-height: 576px) {
+    .h-doces, .h-artesanato {
+        padding: 0;
+    }
+}
+
+
+/* ==========================  PARA TELA MAIOR ========================== */
+
+@media (min-width: 576px) {
+    .container {
+        box-sizing: border-box;
+        width: 100%;
+        max-width: 960px;
+        padding: 0 10px;
+        margin: auto;
+    }
+
+    #menu {
+        border-bottom: 5px solid #b76642;
+    }
+
+    #botao-menu {
+        display: none;
+    }
+
+    #logo-topo {
+        margin-left: -10px;
+    }
+
+    #menu>div {
+        text-align: left;
+    }
+
+    #lista-menu {
+        display: inline-block;
+        height: 100%;
+        right: 10px;
+        border: 0;
+        top: 0;
+        width: auto;
+    }
+    
+    #lista-menu li {
+        display: inline-block;
+        line-height: 80px;
+        padding: 0 0 0 10px;
+    }
+
+    .doces-lista div img,
+    .artesanato-lista div img {
+        width: auto;
+    }
+
+    .fotos {
+        width: 540px;
+        display: inline-grid;
+        grid-template-columns: 50px auto 50px;
+    }
+    .botao-fotos img {
+        width: auto;
+        height: 22px;
+    }
+    #botao-prox img {
+        transform: rotate(0);
+    }
+    #botao-voltar img {
+        transform: rotate(0);
+    }
+
+    #contato label span {
+        display: inline-block;
+        text-align: right;
+        margin-right: .3em;
+    }
+    #contato label input,
+    #contato label select,
+    #contato label textarea  {
+        width: 75%;
+        max-width: 992px;
+    }
+    .container-footer {
+        display: inline-block;
+        width: 80%;
+        margin: 2em 0;
+        position: relative;
+        text-align: left;
+    }
+    
+    #redes-sociais {
+        position: absolute;
+        right: 0;
+        display: inline-block;
+    }
+    #redes-sociais img {
+        width: auto;
+    }
+}
+
+@media (min-width: 768px) {
+
+    #menu {
+        font-size: 1.5em;
+    }
+    /* 3 fotos lado a lado */
+    .fotos {
+        width: 720px;
+    }
+    #contato form {
+        width: 70%;
+    }
+    .fotos a,
+    img.item-foto {
+        height: 125px;
+    }
+}
+
+@media (min-width: 992px) {
+    html {
+        font-size: 20px;
+    }
+    header div div {
+        width: 26ch;
+    }
+    /* 4 fotos lado a lado */
+    .fotos {
+        width: 960px;
+    }
+    .fotos a,
+    img.item-foto {
+        height: 150px;
+    }
+}
