@@ -48,11 +48,11 @@ $(document).ready(function(){
         var sessaoDoce = $(".doces-lista").offset().top;
         var sessaoArtesanato = $(".artesanato-lista").offset().top;        
 
-        if(basePagina >= sessaoDoce && docesCarregado){
+        if(basePagina >= sessaoDoce && !docesCarregado){
             carregaNaPagina( $("#doces .janela-sessao") );
             docesCarregado = true
         }
-        if(basePagina >= sessaoArtesanato && artesanatoCarregado) {
+        if(basePagina >= sessaoArtesanato && !artesanatoCarregado) {
             carregaNaPagina( $("#artesanato .janela-sessao") );
             artesanatoCarregado = true;
         }
