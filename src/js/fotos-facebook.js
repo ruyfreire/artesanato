@@ -1,6 +1,7 @@
     var numFotos = 0;
     var proxFotos = "";
-    listaFotos = 0;
+    var listaFotos = 0;
+    var albumFotos = $('#trabalhos div.fotos');
 
     //Configura e executa API, para carregar fotos
     window.fbAsyncInit = function() {
@@ -33,7 +34,7 @@
     //inserir fotos na pagina
     function inserirFotos(album){
         for(var i = 0; i < album.data.length; i++) {
-            $('#trabalhos div.fotos').append(
+            albumFotos.append(
                 '<div><a ' +
                 'href="' + album.data[i].source + '" ' +
                 'data-lightbox="' + listaFotos + '">' +
@@ -60,7 +61,7 @@
                 numFotos += response.data.length;
 
                 for(var i = 0; i < response.data.length; i++) {
-                    $('#trabalhos div.fotos').slick('slickAdd',
+                    albumFotos.slick('slickAdd',
                     '<div><a ' +
                     'href="' + response.data[i].source + '" ' +
                     'data-lightbox="' + listaFotos + '">' +
@@ -91,7 +92,7 @@
 
     // =============  slider da sessao trabalhos  ================
     function organizaQuadro(){
-        $(".fotos").slick({
+        albumFotos.slick({
             prevArrow: '<buttom type="buttom" id="botao-voltar" class="botao-fotos"><img src="img/icon/left.png"/></buttom>',
             nextArrow: '<buttom type="buttom" id="botao-prox" class="botao-fotos" onclick="maisFotos()"><img src="img/icon/right.png"/></buttom>',
             infinite: false,
