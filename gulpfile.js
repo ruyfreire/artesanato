@@ -1,50 +1,56 @@
-var gulp = require("gulp"),
+const { series, parallel, src, dest } = require('gulp'),
 	clean = require("gulp-clean"),
 	cssmin = require("gulp-cssmin"),
 	uglify = require("gulp-uglify"),
 	htmlMin = require("gulp-htmlmin"),
-	gulpSequence = require("gulp-sequence");
+	postcss = require("gulp-postcss"),
+	postcssPresetEnv = require("postcss-preset-env");
 
-gulp.task("default", ["copy"], function(){
-	gulp.start("sequence1");
-});
 
 //fazer copia de arquivos na pasta dist, após executar tarefa clean
-gulp.task("copy", ["clean"], function(){
-	return gulp.src("src/**/*")
-		.pipe(gulp.dest("dist"));
-});
+function copiar(){
+	return src("src/**/*")
+		.pipe(dest("dist"));
+};
 
 //apagar pasta dist
-gulp.task("clean", function(){
-	return gulp.src("dist")
+function limpar(){
+	return src("dist", {force: true, read: false, allowEmpty: true})
 		.pipe(clean());
-});
+};
 
 //minificar de css
-gulp.task("min-css", function(){
-	return gulp.src("dist/css/*.css")
+function minCss(){
+	return src("dist/css/*.css")
 		.pipe(cssmin())
-		.pipe(gulp.dest("dist/css"));
-});
+		.pipe(dest("dist/css"));
+};
 
 //minificar de js
-gulp.task("min-js", function(){
-	return gulp.src("dist/js/*.js")
+function minJs(){
+	return src("dist/js/*.js")
 		.pipe(uglify())
-		.pipe(gulp.dest("dist/js"));
-});
+		.pipe(dest("dist/js"));
+};
 
 //minifica html
-gulp.task("html-min", function(){
-	return gulp.src("dist/*.html")
+function minHtml(){
+	return src("dist/*.html")
 	.pipe(htmlMin({
 		collapseInlineTagWhitespace: true,
 		collapseWhitespace: true,
 		removeComments: true
 	}))
-	.pipe(gulp.dest("dist"));
-});
+	.pipe(dest("dist"));
+};
 
+function convertCss() {
+	return src("./dist/css/*.css")
+	.pipe(postcss([
+			postcssPresetEnv({stage: 3})
+		]))
+	.pipe(dest("dist/css"))
+};
+		
 
-gulp.task("sequence1", gulpSequence( ['min-css', 'min-js'], 'html-min') );
+exports.default = series(limpar, copiar, convertCss, parallel(minCss, minJs), minHtml);
