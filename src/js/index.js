@@ -1,25 +1,25 @@
 $(document).ready(function(){
 
-    var basePagina;
+    let basePagina;
 
-    var sessaoDoce = $(".doces-lista").offset().top;
-    var sessaoArtesanato = $(".artesanato-lista").offset().top;
-    var sessaoTrabalho = $("#trabalhos").offset().top;
+    const sessaoDoce = $(".doces-lista").offset().top;
+    const sessaoArtesanato = $(".artesanato-lista").offset().top;
+    const sessaoTrabalho = $("#trabalhos").offset().top;
     lazyLoadSessoes();
     
-    var docesCarregado = false;
-    var artesanatoCarregado = false;
-    var trabalhoCarregado = false; 
+    let docesCarregado = false;
+    let artesanatoCarregado = false;
+    let trabalhoCarregado = false; 
     
-    var botaoMenu = $("#lista-menu");
-    var botaoTopo = $("#botao-topo");
+    const botaoMenu = document.querySelector("#lista-menu");
+    const botaoTopo = $("#botao-topo");
     botaoTop();
 
 
 
     //================= mostrar/esconder menu  =====================
     $("#botao-menu").click(function() {
-        botaoMenu.toggleClass("exibe");
+        botaoMenu.classList.toggle("exibe");
         botaoMenu.triggerHandler( "focus" );
     });
 

@@ -1,17 +1,19 @@
-@font-face {
-    font-family: "Broadway";
-    src: url("../font/Mizo\ Broadway.ttf") format("TrueType");
-}
+/* marrom claro: #733f28
+marrom escuro: #3e2723 */
 
 * {
     margin: 0;
     padding: 0;
     border: 0;
+    box-sizing: border-box;
 }
 
 html {
-    font-family: "Broadway", verdana, sans-serif;
-    font-size: 16px;
+    font-family: 'Acme', sans-serif;
+    /* font-family: 'Amaranth', sans-serif;
+    font-family: 'Mitr', sans-serif; */
+    font-size: 18px;
+    letter-spacing: 1px;
 }
 
 a, a:visited, a:focus, a:hover, a:active {
@@ -25,8 +27,8 @@ section {
 }
 
 .sessao-chocolate {
-    background-color: #3e2723;
-    border-top: 8px solid #b76642;
+    background-color: #733f28;
+    border-top: 8px solid #3e2723;
     color: #FFF;
 }
 
@@ -41,8 +43,8 @@ section {
     position: fixed;
     right: 2em;
     bottom: 2em;
-    padding: .5em;
-    background-color: #b76642;
+    padding: 10px;
+    background-color: #3e2723;
     transition: opacity .6s ease-in-out, box-shadow .2s ease-in;
     border-radius: 2px;
     box-shadow: -3px 3px 10px #000;
@@ -65,8 +67,8 @@ section {
     width: 100%;
     font-size: 1.2em;
     color: #FFF;
-    background-color: #3e2723;
-    /* border-bottom: 4px solid #b76642; */
+    background-color: #733f28;
+    /* border-bottom: 4px solid #3e2723; */
 }
 #lista-menu,
 #lista-menu li a {
@@ -96,26 +98,23 @@ section {
     margin: 6px auto;
 }
 
-.esconde {
-    height: 0;
-    padding-bottom: 0;
-}
 .exibe {
-    height: 160px !important;
-    padding-bottom: .5em !important;
+    max-height: 9999px !important;
+    transition: max-height 2s ease-in-out;
 }
 
 #lista-menu {
     position: absolute;
-    background-color: #3e2723;
-    border-bottom: 5px solid #b76642;
+    background-color: #733f28;
+    border-bottom: 5px solid #3e2723;
+    max-height: 0;
     top: 100%;
     overflow: hidden;
-    transition: height .5s ease-in-out;
+    transition: max-height 2s ease-in-out;
 }
 
 #lista-menu li {
-    padding: .5em;
+    padding: 10px;
 }
 
 #lista-menu li a {
@@ -125,12 +124,12 @@ section {
 
 #lista-menu li a:focus,
 #lista-menu li a:hover {
-    color: #b76642;
+    color: #3e2723;
 }
 
 #logo-topo {
     border-radius: 50%;
-    border: 10px solid #3e2723;
+    border: 10px solid #733f28;
 }
 
 /* ========================  BANNER  ========================= */
@@ -149,15 +148,15 @@ header > div {
 }
 .h-doces,
 .h-artesanato {
-    padding: 2em .5em;
+    padding: 35px 10px;
     width: 100%;
-    box-sizing: border-box;
 }
+
 .h-doces div,
 .h-artesanato div {
     display: inline-block;
     background-color: rgba(62,39,35,.9);
-    padding: 1em;
+    padding: 20px;
     border-radius: 6px;
     color: #FFF;
     font-size: 1.2em;
@@ -190,7 +189,8 @@ header > div {
 .artesanato-lista div {
     text-align: center;
     padding: 10px;
-    transition: box-shadow .35s ease-in;
+    border-radius: 2px;
+    transition: all .15s ease-in-out;
     cursor: pointer;
 }
 
@@ -198,13 +198,14 @@ header > div {
 .doces-lista div:focus,
 .artesanato-lista div:hover,
 .artesanato-lista div:focus {
-    box-shadow: -3px 3px 15px rgba(0,0,0,.8);
+    box-shadow: -2px 2px 10px rgba(0,0,0,.5);
+    transform: translateY(-2px);
 }
 
 
 .doces-lista div img,
 .artesanato-lista div img {
-    border-radius: 3px;
+    border-radius: 2px;
     margin-bottom: 10px;
     width: 100px;
 }
@@ -224,7 +225,7 @@ header > div {
 
 #doces div ~ p,
 #artesanato div ~ p {
-    padding: 1em;
+    padding: 20px;
 }
 
 /* =========================  JANELA DOCES E ARTESANATO ========================================== */
@@ -246,17 +247,19 @@ header > div {
 }
 
 .janela-sessao {
-    position: fixed;
     display: inline-block;
-    padding: .5em;
-    box-shadow: -10px 10px 15px #000;
+    width: 100%;
+    max-width: 750px;
+    position: fixed;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    background-color: #b76642;
-    border-radius: 10px;
     z-index: 999;
-    transition: opacity .6s ease-in-out;
+    padding: 10px;
+    box-shadow: -10px 10px 15px #000;
+    background-color: #3e2723;
+    border-radius: 10px;
+    transition: all .6s ease-in-out;
     overflow: hidden;
 }
 
@@ -276,25 +279,22 @@ header > div {
 }
 
 .container-janela {
-    display: -ms-inline-grid;
-        display: inline-grid;
-    -ms-grid-columns: auto auto;
-        grid-template-columns: auto auto;
+    display: flex;
     border: 1px solid rgba(0,0,0,0.5);
-    border-radius: 10px;
-    padding: .5em;
+    border-radius: 5px;
+    padding: 10px;
 }
 
 .janela-item-menu {
-    display: grid;
-    display: -ms-grid;
-    align-content: space-evenly;
+    display: flex;
+    flex-direction: column;
 }
 
 .janela-item-descricao {
-    background-color: #3e2723;
+    flex-grow: 1;
+    background-color: #733f28;
     border-radius: 0 5px 5px 0;
-    padding: .5em;
+    padding: 10px;
     margin-left: .5em;
 }
 
@@ -303,7 +303,7 @@ header > div {
 }
 
 .lista-subitem {
-    padding: .5em;
+    padding: 10px;
     margin-bottom: .5em;
     border-radius: 5px;
     background-color: #bb785a;
@@ -313,7 +313,7 @@ header > div {
 
 .lista-subitem:hover,
 .lista-subitem:focus {
-    background-color: #3e2723;
+    background-color: #733f28;
 }
 
 #artesanato .lista-subitem {
@@ -326,7 +326,7 @@ header > div {
 }
 
 .item-ativo {
-    background-color: #3e2723;
+    background-color: #733f28;
     box-shadow: none;
     border-radius: 5px 0 0 5px;
     border: 0;
@@ -345,7 +345,7 @@ header > div {
     height: 100%;
     top: 0;
     left: 10%;
-    background-color: #3e2723;
+    background-color: #733f28;
     z-index: -10;
 }
 
@@ -370,7 +370,7 @@ header > div {
 }
 
 .fotos {
-    border: 5px solid #b76642;
+    border: 5px solid #3e2723;
     width: 200px;
     margin: auto;
     text-align: center;
@@ -388,10 +388,9 @@ img.item-foto {
 }
 
 .botao-fotos {
-    background-color: #3e2723;
+    background-color: #733f28;
     width: 100%;
     display: inline-block;
-    box-sizing: border-box;
     margin: 2px 0;
     padding: 5px;
 }
@@ -409,7 +408,7 @@ img.item-foto {
 
 .botao-fotos:hover,
 .botao-fotos:focus {
-    background-color: #b76642;
+    background-color: #3e2723;
 }
 
 #botao-prox {
@@ -425,7 +424,7 @@ img.item-foto {
 
 #trabalhos > h3 a:hover,
 #trabalhos > h3 a:focus {
-    color: #b76642;
+    color: #3e2723;
 }
 
 /* =====================  CONTATO  =========================== */
@@ -449,7 +448,6 @@ img.item-foto {
 #contato label input,
 #contato label select,
 #contato label textarea  {
-    box-sizing: border-box;
     width: 100%;
     max-width: 100%;
     border-radius: 2px;
@@ -462,7 +460,7 @@ img.item-foto {
 #contato label select:active,
 #contato label textarea:focus,
 #contato label textarea:active {
-    box-shadow: 0 0 10px 1px #b76642;
+    box-shadow: 0 0 10px 1px #3e2723;
     outline-color: transparent;
     -webkit-outline-color: transparent;
 }
@@ -482,24 +480,28 @@ img.item-foto {
 
 #botao-enviar {
     font-size: 1em;
-    padding: .5em 1em;
-    background-color: #3e2723;
+    width: 150px;
+    padding: 10px;
+    background-color: #733f28;
     border: 0;
-    border-radius: 5px;
-    box-shadow: -3px 3px 10px #000;
+    border-radius: 2px;
+    box-shadow: -2px 2px 5px rgba(0,0,0, .5);
     color: #FFF;
     font-family: inherit;
+    letter-spacing: 5px;
+    font-weight: bold;
+    transition: all .1s ease-in-out;
 }
 
 #botao-enviar:hover,
 #botao-enviar:focus {
-    background-color: #b76642;
+    background-color: #3e2723;
     cursor: pointer;
 }
 
 #botao-enviar:active {
     box-shadow: none;
-    /* transition: box-shadow .1s ease-in-out; */
+    transform: translateY(1px);
 }
 
 /* =========================  FOOTER  =========================== */
@@ -507,7 +509,7 @@ img.item-foto {
 footer {
     width: 100%;
     text-align: center;
-    padding: 3em 0;
+    padding: 60px 0;
 }
 
 footer .logo {
@@ -536,7 +538,6 @@ footer .logo {
 
 @media (min-width: 576px) {
     .container {
-        box-sizing: border-box;
         width: 100%;
         max-width: 960px;
         padding: 0 10px;
@@ -544,7 +545,7 @@ footer .logo {
     }
 
     #menu {
-        border-bottom: 5px solid #b76642;
+        border-bottom: 5px solid #3e2723;
     }
 
     #botao-menu {
@@ -561,7 +562,9 @@ footer .logo {
 
     #lista-menu {
         display: inline-block;
+        background-color: initial;
         height: 100%;
+        max-height: none;
         right: 10px;
         border: 0;
         top: 0;
@@ -643,9 +646,6 @@ footer .logo {
 }
 
 @media (min-width: 992px) {
-    html {
-        font-size: 20px;
-    }
     header div div {
         width: 26ch;
     }
